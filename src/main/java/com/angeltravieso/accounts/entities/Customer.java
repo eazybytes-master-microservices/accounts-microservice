@@ -1,14 +1,12 @@
 package com.angeltravieso.accounts.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
+@ToString
 //@Table(name = "customer")
 public class Customer extends BaseEntity {
 
