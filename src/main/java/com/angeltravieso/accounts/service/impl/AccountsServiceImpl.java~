@@ -110,7 +110,7 @@ public class AccountsServiceImpl implements IAccountsService {
             isUpdated = true;
         }
 
-        return isUpdated;
+
     }
 
 }
