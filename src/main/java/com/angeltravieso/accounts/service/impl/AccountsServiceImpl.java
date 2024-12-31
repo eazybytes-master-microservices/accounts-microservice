@@ -1,10 +1,13 @@
 package com.angeltravieso.accounts.service.impl;
 
 import com.angeltravieso.accounts.constants.AccountsConstants;
+import com.angeltravieso.accounts.dto.AccountsDto;
 import com.angeltravieso.accounts.dto.CustomerDto;
 import com.angeltravieso.accounts.entity.Accounts;
 import com.angeltravieso.accounts.entity.Customer;
 import com.angeltravieso.accounts.exception.CustomerAlreadyExistsException;
+import com.angeltravieso.accounts.exception.ResourceNotFoundException;
+import com.angeltravieso.accounts.mapper.AccountsMapper;
 import com.angeltravieso.accounts.mapper.CustomerMapper;
 import com.angeltravieso.accounts.repositories.AccountsRepository;
 import com.angeltravieso.accounts.repositories.CustomerRepository;
@@ -46,7 +49,6 @@ public class AccountsServiceImpl implements IAccountsService {
     }
 
     /**
-     *
      * @param customer - Customer Object
      * @return the new account  details
      */
@@ -62,6 +64,28 @@ public class AccountsServiceImpl implements IAccountsService {
         newAccount.setCreatedBy("Admin");
 
         return newAccount;
+    }
+
+    /**
+     *
+     * @param mobileNumber - Input Mobile Number
+     * @return Account Details based on a given MobileNumber
+     */
+    @Override
+    public CustomerDto fetchAccount(String mobileNumber) {
+
+         Customer customer = customerRepository.findByMobileNumber(mobileNumber).orElseThrow(
+                 () -> new ResourceNotFoundException("Customer", "mobileNumber", mobileNumber)
+         );
+
+         Accounts accounts = accountsRepository.findByCustomerId(customer.getCustomerId()).orElseThrow(
+                 () -> new ResourceNotFoundException("Account", "customerId", customer.getCustomerId().toString())
+         );
+
+         CustomerDto customerDto = CustomerMapper.mapToCustomerDto(customer, new CustomerDto());
+         customerDto.setAccountsDto(AccountsMapper.mapToAccountsDto(accounts, new AccountsDto()));
+
+        return customerDto;
     }
 
 }
