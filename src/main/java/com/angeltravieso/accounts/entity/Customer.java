@@ -1,4 +1,4 @@
-package com.angeltravieso.accounts.entities;
+package com.angeltravieso.accounts.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,6 +7,8 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 //@Table(name = "customer")
 public class Customer extends BaseEntity {
 

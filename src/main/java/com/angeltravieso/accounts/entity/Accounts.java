@@ -1,4 +1,4 @@
-package com.angeltravieso.accounts.entities;
+package com.angeltravieso.accounts.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,8 +14,8 @@ public class Accounts extends BaseEntity {
     @Column(name = "customer_id")
     private Long customerId;
 
-    @Id
     @Column(name = "account_number")
+    @Id
     private Long accountNumber;
 
     @Column(name = "account_type")

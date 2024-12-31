@@ -2,7 +2,7 @@ package com.angeltravieso.accounts.service;
 
 import com.angeltravieso.accounts.dto.CustomerDto;
 
-public interface IAccountService {
+public interface IAccountsService {
     /**
      *
      * @param customerDto - CustomerDto Object

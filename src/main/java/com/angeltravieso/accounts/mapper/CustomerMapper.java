@@ -1,7 +1,7 @@
 package com.angeltravieso.accounts.mapper;
 
 import com.angeltravieso.accounts.dto.CustomerDto;
-import com.angeltravieso.accounts.entities.Customer;
+import com.angeltravieso.accounts.entity.Customer;
 
 public class CustomerMapper {
     public static CustomerDto mapToCustomerDto(Customer customer, CustomerDto customerDto) {
@@ -11,9 +11,9 @@ public class CustomerMapper {
         return customerDto;
     }
     public static Customer mapToCustomer(CustomerDto customerDto, Customer customer) {
-        customer.setName(customer.getName());
-        customer.setEmail(customer.getEmail());
-        customer.setMobileNumber(customer.getMobileNumber());
+        customer.setName(customerDto.getName());
+        customer.setEmail(customerDto.getEmail());
+        customer.setMobileNumber(customerDto.getMobileNumber());
         return customer;
     }
 

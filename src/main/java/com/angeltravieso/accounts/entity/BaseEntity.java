@@ -1,4 +1,4 @@
-package com.angeltravieso.accounts.entities;
+package com.angeltravieso.accounts.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
