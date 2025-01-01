@@ -48,9 +48,9 @@ public class AccountsController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<ResponseDto> deleteAccountDetails(@RequestBody CustomerDto customerDto) {
-        boolean isDeleted = iAccountService.updateAccount(customerDto);
-        if(isDeleted) {
+    public ResponseEntity<ResponseDto> deleteAccountDetails() {
+        boolean isUpdated = iAccountService.updateAccount(customerDto);
+        if(isUpdated) {
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(new ResponseDto(AccountsConstants.STATUS_200, AccountsConstants.MESSAGE_200));
